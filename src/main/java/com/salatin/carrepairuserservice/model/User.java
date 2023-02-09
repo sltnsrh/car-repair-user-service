@@ -1,5 +1,6 @@
 package com.salatin.carrepairuserservice.model;
 
+import com.salatin.carrepairuserservice.model.status.UserRole;
 import java.util.List;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
@@ -19,4 +20,5 @@ public class User {
     private String mobile;
     private List<Car> cars;
     private List<Order> orders;
+    private UserRole role;
 }
