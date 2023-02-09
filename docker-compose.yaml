@@ -1,20 +1,13 @@
-version: "3.8"
+version: '3.1'
 
 services:
-  mongodb:
+
+  mongo:
     image: mongo
-    container_name: mongodb
+    container_name: mongoDb
+    restart: always
     ports:
       - 27017:27017
-    volumes:
-      - data:/data
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=root;
-      - MONGO_INITDB_ROOT_PASSWORD=password;
-
-volumes:
-  data: {}
-
-networks:
-  default:
-    name: car_repair
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
