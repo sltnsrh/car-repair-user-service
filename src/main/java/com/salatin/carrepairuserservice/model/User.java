@@ -7,10 +7,10 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
-@Document
+@Document(collection = "users")
 public class User {
     @Id
-    private Long id;
+    private String id;
     @Indexed(unique = true)
     private String email;
     private String password;
