@@ -19,7 +19,7 @@ public class SecurityConfig {
             "/swagger-resources/**",
             "/swagger-ui/**",
             "/v3/api-docs",
-            "/registration"
+            "/register"
     };
 
     private final JwtTokenFilter jwtTokenFilter;
@@ -32,6 +32,7 @@ public class SecurityConfig {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeHttpRequests()
+                .requestMatchers(AUTH_WHITELIST).anonymous()
                 .requestMatchers(AUTH_WHITELIST).permitAll()
                 .anyRequest().authenticated();
         http.addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class);

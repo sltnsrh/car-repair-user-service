@@ -19,7 +19,7 @@ public class RegistrationController {
     @PostMapping(value = "/register")
     public ResponseEntity<RegistrationResponseDto> register(
             @Valid @RequestBody RegistrationRequestDto request) {
-        return new ResponseEntity(
+        return new ResponseEntity<>(
                 registrationService.registerCustomer(request),
                 HttpStatus.CREATED
         );
