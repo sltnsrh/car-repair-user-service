@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public class RegistrationResponse {
-    private String email;
+public class RegistrationResponseDto {
+    private String id;
     private String message;
 }

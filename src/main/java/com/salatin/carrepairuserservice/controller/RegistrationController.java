@@ -1,8 +1,9 @@
 package com.salatin.carrepairuserservice.controller;
 
-import com.salatin.carrepairuserservice.model.dto.request.RegistrationRequest;
-import com.salatin.carrepairuserservice.model.dto.response.RegistrationResponse;
+import com.salatin.carrepairuserservice.model.dto.request.RegistrationRequestDto;
+import com.salatin.carrepairuserservice.model.dto.response.RegistrationResponseDto;
 import com.salatin.carrepairuserservice.service.RegistrationService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +17,11 @@ public class RegistrationController {
     private final RegistrationService registrationService;
 
     @PostMapping(value = "/register")
-    public ResponseEntity<RegistrationResponse> register(@RequestBody RegistrationRequest request) {
-        return new ResponseEntity(registrationService.register(request), HttpStatus.CREATED);
+    public ResponseEntity<RegistrationResponseDto> register(
+            @Valid @RequestBody RegistrationRequestDto request) {
+        return new ResponseEntity(
+                registrationService.registerCustomer(request),
+                HttpStatus.CREATED
+        );
     }
 }

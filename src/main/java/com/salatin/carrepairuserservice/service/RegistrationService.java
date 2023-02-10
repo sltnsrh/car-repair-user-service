@@ -1,9 +1,9 @@
 package com.salatin.carrepairuserservice.service;
 
 import com.salatin.carrepairuserservice.model.User;
-import com.salatin.carrepairuserservice.model.dto.request.RegistrationRequest;
-import com.salatin.carrepairuserservice.model.dto.response.RegistrationResponse;
-import com.salatin.carrepairuserservice.model.status.UserRole;
+import com.salatin.carrepairuserservice.model.dto.request.RegistrationRequestDto;
+import com.salatin.carrepairuserservice.model.dto.response.RegistrationResponseDto;
+import com.salatin.carrepairuserservice.service.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -11,20 +11,15 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class RegistrationService {
     private final UserService userService;
+    private final UserMapper userMapper;
 
-    public RegistrationResponse register(RegistrationRequest request) {
-        User user = new User();
-        user.setEmail(request.getEmail());
-        user.setFirstName(request.getFirstName());
-        user.setLastName(request.getLastName());
-        user.setMobile(request.getMobile());
-        user.setRole(UserRole.CUSTOMER);
+    public RegistrationResponseDto registerCustomer(RegistrationRequestDto request) {
+        User user = userMapper.toUser(request);
 
         user = userService.save(user);
 
-        RegistrationResponse response = new RegistrationResponse(
-                user.getEmail(), "User registered successfully."
+        return new RegistrationResponseDto(
+                user.getId(), "User was registered successfully."
         );
-        return response;
     }
 }
