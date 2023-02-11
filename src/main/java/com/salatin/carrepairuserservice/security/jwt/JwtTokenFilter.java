@@ -27,6 +27,7 @@ public class JwtTokenFilter extends OncePerRequestFilter {
     private static final String USER_UNAUTHORIZED_MESSAGE =
             "The user is unauthorized. Please go to the authorization page and log in.";
     private static final String AUTHORIZATION_HEADER = "Authorization";
+
     private final JwtTokenProvider jwtTokenProvider;
     private final ObjectMapper objectMapper;
     private final BlacklistRepository blacklistRepository;

@@ -32,7 +32,6 @@ public class SecurityConfig {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeHttpRequests()
-                .requestMatchers(AUTH_WHITELIST).anonymous()
                 .requestMatchers(AUTH_WHITELIST).permitAll()
                 .anyRequest().authenticated();
         http.addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class);
