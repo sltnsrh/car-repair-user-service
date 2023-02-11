@@ -4,6 +4,7 @@ import com.salatin.carrepairuserservice.validation.FieldsValueMatch;
 import com.salatin.carrepairuserservice.validation.ValidEmail;
 import com.salatin.carrepairuserservice.validation.ValidPassword;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,7 +20,9 @@ import lombok.NoArgsConstructor;
 public class RegistrationRequestDto {
     @ValidEmail
     private String email;
+    @Pattern(regexp = "^[a-zA-Z]{2,30}$", message = "First name doesn't match")
     private String firstName;
+    @Pattern(regexp = "^[a-zA-Z]{2,50}$", message = "Last name doesn't match")
     private String lastName;
     @ValidPassword
     private String password;
