@@ -25,11 +25,13 @@ import org.springframework.transaction.annotation.Transactional;
 @Setter
 @RequiredArgsConstructor
 public class JwtTokenProvider {
-    private static final int TOKEN_START_INDEX = 7;
     private static final String ROLES_CLAIMS = "role";
     private static final String BEARER_START = "Bearer ";
+    private static final int TOKEN_START_INDEX = 7;
+
     private final UserDetailsService userDetailsService;
     private final UserService userService;
+
     @Value("${jwt.token.secret}")
     private String secret;
     @Value("${jwt.token.expired.ms}")
