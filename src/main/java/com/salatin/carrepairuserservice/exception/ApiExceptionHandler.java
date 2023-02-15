@@ -20,7 +20,7 @@ public class ApiExceptionHandler {
         HttpStatus status = HttpStatus.BAD_REQUEST;
         String errorMessages = e.getBindingResult().getAllErrors().stream()
                 .map(DefaultMessageSourceResolvable::getDefaultMessage)
-                .collect(Collectors.joining(", "));
+                .collect(Collectors.joining("; "));
         return new ResponseEntity<>(createApiExceptionObject(errorMessages, status), status);
     }
 
@@ -30,5 +30,13 @@ public class ApiExceptionHandler {
                 status,
                 LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))
         );
+    }
+
+    @ExceptionHandler(value = UserAlreadyExistsException.class)
+    public ResponseEntity<ApiExceptionObject> handleUserAlreadyExistsException(
+            UserAlreadyExistsException e
+    ) {
+       HttpStatus status = HttpStatus.CONFLICT;
+       return new ResponseEntity<>(createApiExceptionObject(e.getMessage(), status), status);
     }
 }
