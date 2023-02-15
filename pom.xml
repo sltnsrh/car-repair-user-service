@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.salatin</groupId>
-    <artifactId>car-repair-user-service</artifactId>
+    <artifactId>user-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>car-repair-user-service</name>
-    <description>car-repair-user-service</description>
+    <name>user-service</name>
+    <description>user-service</description>
 
     <properties>
         <java.version>17</java.version>
