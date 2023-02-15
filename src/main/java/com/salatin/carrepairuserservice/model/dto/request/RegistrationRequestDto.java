@@ -2,6 +2,7 @@ package com.salatin.carrepairuserservice.model.dto.request;
 
 import com.salatin.carrepairuserservice.validation.FieldsValueMatch;
 import com.salatin.carrepairuserservice.validation.ValidEmail;
+import com.salatin.carrepairuserservice.validation.ValidMobile;
 import com.salatin.carrepairuserservice.validation.ValidPassword;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
@@ -28,5 +29,6 @@ public class RegistrationRequestDto {
     private String password;
     @NotBlank(message = "Confirmation password field must not be empty")
     private String repeatPassword;
+    @ValidMobile
     private String mobile;
 }
