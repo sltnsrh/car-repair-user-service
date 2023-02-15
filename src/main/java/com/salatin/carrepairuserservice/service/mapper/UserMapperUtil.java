@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class UserMapperUtil {
     public static final UserRole CUSTOMER_ROLE = UserRole.CUSTOMER;
-    public static final String REDUNDANT_MOBILE_SIGNS = "[ ()-.]";
+    public static final String REDUNDANT_MOBILE_SIGNS = "[ ()\\-.]";
     public static final String EMPTY_SIGN = "";
 
     private final PasswordEncoder passwordEncoder;
