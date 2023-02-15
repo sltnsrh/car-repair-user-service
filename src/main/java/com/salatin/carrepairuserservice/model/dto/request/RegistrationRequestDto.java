@@ -31,4 +31,5 @@ public class RegistrationRequestDto {
     private String repeatPassword;
     @ValidMobile
     private String mobile;
+    private String role;
 }

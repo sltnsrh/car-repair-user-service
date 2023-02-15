@@ -12,5 +12,6 @@ public abstract class UserMapper {
 
     @Mapping(target = "id", ignore = true)
     @Mapping(source = "password", target = "password", qualifiedByName = "setEncodedPassword")
-    public abstract User toUser(RegistrationRequestDto request);
+    @Mapping(source = "role", target = "role", qualifiedByName = "setCustomerRole")
+    public abstract User toCustomerUser(RegistrationRequestDto request);
 }

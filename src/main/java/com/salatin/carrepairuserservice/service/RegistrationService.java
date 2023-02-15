@@ -17,7 +17,7 @@ public class RegistrationService {
     public RegistrationResponseDto registerCustomer(RegistrationRequestDto request) {
         checkIfUserNotAlreadyExists(request.getEmail());
 
-        User user = userMapper.toUser(request);
+        User user = userMapper.toCustomerUser(request);
         user = userService.save(user);
 
         return new RegistrationResponseDto(
