@@ -9,6 +9,10 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 public class UserMapperUtil {
+    public static final UserRole CUSTOMER_ROLE = UserRole.CUSTOMER;
+    public static final String REDUNDANT_MOBILE_SIGNS = "[ ()-.]";
+    public static final String EMPTY_SIGN = "";
+
     private final PasswordEncoder passwordEncoder;
 
     @Named("setEncodedPassword")
@@ -18,6 +22,11 @@ public class UserMapperUtil {
 
     @Named("setCustomerRole")
     UserRole setCustomerRole(String value) {
-        return UserRole.CUSTOMER;
+        return CUSTOMER_ROLE;
+    }
+
+    @Named("setMobile")
+    String setMobile(String mobile) {
+        return mobile.replaceAll(REDUNDANT_MOBILE_SIGNS, EMPTY_SIGN);
     }
 }
