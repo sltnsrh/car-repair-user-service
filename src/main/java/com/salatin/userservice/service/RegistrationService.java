@@ -2,9 +2,6 @@ package com.salatin.userservice.service;
 
 import com.salatin.userservice.exception.UserAlreadyExistsException;
 import com.salatin.userservice.model.User;
-import com.salatin.userservice.model.dto.request.RegistrationRequestDto;
-import com.salatin.userservice.model.dto.response.RegistrationResponseDto;
-import com.salatin.userservice.service.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,17 +9,11 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class RegistrationService {
     private final UserService userService;
-    private final UserMapper userMapper;
 
-    public RegistrationResponseDto registerCustomer(RegistrationRequestDto request) {
-        checkIfUserNotAlreadyExists(request.getEmail());
+    public User registerCustomer(User user) {
+        checkIfUserNotAlreadyExists(user.getEmail());
 
-        User user = userMapper.toCustomerUser(request);
-        user = userService.save(user);
-
-        return new RegistrationResponseDto(
-                user.getId(), "User was registered successfully."
-        );
+        return userService.save(user);
     }
 
     private void checkIfUserNotAlreadyExists(String email) {
