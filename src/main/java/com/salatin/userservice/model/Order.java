@@ -4,9 +4,11 @@ import com.salatin.userservice.model.status.OrderStatus;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
+import org.springframework.data.annotation.CreatedDate;
 
 public class Order {
     private Long id;
+//    @CreatedDate
     private LocalDateTime createdAt;
     private LocalDateTime customerRequestedAt;
     private LocalDateTime startRepairAt;
