@@ -140,6 +140,61 @@
                     </annotationProcessorPaths>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.8</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                        <configuration>
+                            <excludes>
+                                <exclude>com/salatin/userservice/model/**</exclude>
+                                <exclude>com/salatin/userservice/exception/**</exclude>
+                                <exclude>com/salatin/userservice/validation/**</exclude>
+                                <exclude>com/salatin/userservice/UserServiceApplication.class</exclude>
+                                <exclude>com/salatin/userservice/service/mapper/UserMapperImpl.class</exclude>
+                            </excludes>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>jacoco-check</id>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                        <configuration>
+                            <excludes>
+                                <exclude>com/salatin/userservice/model/**</exclude>
+                                <exclude>com/salatin/userservice/exception/**</exclude>
+                                <exclude>com/salatin/userservice/validation/**</exclude>
+                                <exclude>com/salatin/userservice/UserServiceApplication.class</exclude>
+                                <exclude>com/salatin/userservice/service/mapper/UserMapperImpl.class</exclude>
+                            </excludes>
+                            <rules>
+                                <rule>
+                                    <element>BUNDLE</element>
+                                    <limits>
+                                        <limit>
+                                            <counter>LINE</counter>
+                                            <value>COVEREDRATIO</value>
+                                            <minimum>0.3</minimum>
+                                        </limit>
+                                    </limits>
+                                </rule>
+                            </rules>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
