@@ -36,7 +36,7 @@ public class ApiExceptionHandler {
     public ResponseEntity<ApiExceptionObject> handleUserAlreadyExistsException(
             UserAlreadyExistsException e
     ) {
-       HttpStatus status = HttpStatus.CONFLICT;
-       return new ResponseEntity<>(createApiExceptionObject(e.getMessage(), status), status);
+        HttpStatus status = HttpStatus.CONFLICT;
+        return new ResponseEntity<>(createApiExceptionObject(e.getMessage(), status), status);
     }
 }

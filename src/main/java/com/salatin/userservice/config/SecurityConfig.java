@@ -15,11 +15,11 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @RequiredArgsConstructor
 public class SecurityConfig {
     private static final String[] AUTH_WHITELIST = {
-            "/swagger-ui.html",
-            "/swagger-resources/**",
-            "/swagger-ui/**",
-            "/v3/api-docs",
-            "/register"
+        "/swagger-ui.html",
+        "/swagger-resources/**",
+        "/swagger-ui/**",
+        "/v3/api-docs",
+        "/register"
     };
 
     private final JwtTokenFilter jwtTokenFilter;
